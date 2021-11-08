@@ -64,11 +64,3 @@ h1 {
 .weather-temperature .active:hover {
     text-decoration: none;
 }
-
-#celcius-link {
-    text-decoration: none;
-}
-
-#farenheit-link {
-    text-decoration: none;
-}

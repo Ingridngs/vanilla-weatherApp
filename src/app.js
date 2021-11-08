@@ -153,4 +153,4 @@ farenheit.addEventListener('click', displayFarenheit)
 let celsius = document.querySelector('#celsius-link')
 celsius.addEventListener('click', displayCelsius)
 
-search('New York')
+search('Mexico City)

@@ -64,3 +64,22 @@ h1 {
 .weather-temperature .active:hover {
     text-decoration: none;
 }
+
+.weather-forecast {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.weather-forecast-day {
+    font-size: 16px;
+    color: black;
+    opacity: 0.6;
+}
+
+.weather-forecast-temperatures {
+    font-size: 13px;
+}
+
+.weather-forecast-minimun {
+    opacity: 0.5;
+}

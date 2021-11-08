@@ -19,7 +19,7 @@ function formatDate(timestamp) {
     ]
     let day = days[date.getDay()]
 
-    return `${day} ${hours}: ${minutes}`
+    return `${day} ${hours}:${minutes}`
 }
 
 function showTemperature(response) {
@@ -31,12 +31,24 @@ function showTemperature(response) {
     dataDescription.innerHTML = response.data.weather[0].description
     let dataWind = document.querySelector('#wind')
     dataWind.innerHTML = response.data.wind.speed
+    let dataHumidity = document.querySelector('#humidity')
+    dataHumidity.innerHTML = response.data.main.humidity
     let dataDate = document.querySelector('#lastupdate')
     dataDate.innerHTML = formatDate(response.data.dt * 1000)
 }
 
-let apiKey = '8c7039eba87f78f3a90f7f73da79726f'
-let city = 'New York'
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+function search(city) {
+    let apiKey = '8c7039eba87f78f3a90f7f73da79726f'
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
 
-axios.get(apiUrl).then(showTemperature)
+    axios.get(apiUrl).then(showTemperature)
+}
+
+function handleSubmit(event) {
+    event.preventDefault()
+    let cityInputElement = document.querySelector('.city-input')
+    search(cityInputElement.value)
+}
+
+let getCity = document.querySelector('#search-form')
+getCity.addEventListener('submit', handleSubmit)

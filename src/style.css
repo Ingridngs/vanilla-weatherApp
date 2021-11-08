@@ -37,7 +37,9 @@ h1 {
 }
 
 .weather-temperature img {
+    position: relative;
     margin-right: 10px;
+    padding-right: 5px;
     height: 64px;
     width: 64px;
 }
@@ -82,4 +84,16 @@ h1 {
 
 .weather-forecast-minimun {
     opacity: 0.5;
+}
+
+#farenheit-link {
+    text-decoration: none;
+}
+
+.link-github {
+    text-decoration: none;
+}
+
+#description {
+    text-transform: capitalize;
 }

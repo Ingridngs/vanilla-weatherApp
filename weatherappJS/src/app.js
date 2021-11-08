@@ -1,3 +1,5 @@
+let celciusTemp = null
+
 function formatDate(timestamp) {
     let date = new Date(timestamp)
     let hours = date.getHours()
@@ -24,7 +26,8 @@ function formatDate(timestamp) {
 
 function showTemperature(response) {
     let dataTemp = document.querySelector('#temperature')
-    dataTemp.innerHTML = Math.round(response.data.main.temp)
+    dataTemp.innerHTML = Math.round(celciusTemp)
+    celciusTemp = Math.round(response.data.main.temp)
     let dataCity = document.querySelector('#city')
     dataCity.innerHTML = response.data.name
     let dataDescription = document.querySelector('#description')
@@ -50,5 +53,30 @@ function handleSubmit(event) {
     search(cityInputElement.value)
 }
 
+function displayFarenheit(event) {
+    event.preventDefault()
+    let convertFarenheit = Math.round((celciusTemp * 9) / 5 + 32)
+    let temperatureElement = document.querySelector('#temperature')
+    celsius.classList.remove('active')
+    farenheit.classList.add('active')
+    temperatureElement.innerHTML = convertFarenheit
+}
+
+function displayCelsius(event) {
+    event.preventDefault()
+    let temperatureElement = document.querySelector('#temperature')
+    celsius.classList.add('active')
+    farenheit.classList.remove('active')
+    temperatureElement.innerHTML = celciusTemp
+}
+
 let getCity = document.querySelector('#search-form')
 getCity.addEventListener('submit', handleSubmit)
+
+let farenheit = document.querySelector('#farenheit-link')
+farenheit.addEventListener('click', displayFarenheit)
+
+let celsius = document.querySelector('#celsius-link')
+celsius.addEventListener('click', displayCelsius)
+
+search('New York')
